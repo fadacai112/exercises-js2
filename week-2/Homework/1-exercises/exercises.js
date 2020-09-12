@@ -15,6 +15,16 @@
  */
 function exerciseOne(arrayOfPeople) {
   let content = document.querySelector("#content");
+  arrayOfPeople.forEach(
+    person => {
+      const h1 = document.createElement(`h1`)
+      const h2 = document.createElement(`h2`)
+      h1.innerText = person.name
+      h2.innerText = person.job
+      content.appendChild(h1)
+      content.appendChild(h2)
+    }
+  )
 }
 
 /**
@@ -26,6 +36,14 @@ function exerciseOne(arrayOfPeople) {
  */
 function exerciseTwo(shopping) {
   //Write your code in here
+  const content = document.getElementById('content')
+  const list = document.createElement('ul')
+  content.appendChild(list)
+  shopping.forEach(item => {
+    const listItem = document.createElement('li')
+    listItem.innerText = item
+    list.appendChild(listItem)
+  });
 }
 
 /**
@@ -57,8 +75,30 @@ function exerciseTwo(shopping) {
 
     The end result should look something like this: https://hyf-js2-week1-makeme-ex1-demo.herokuapp.com/
 **/
+const bookCovers = [
+  'https://assets.wired.com/photos/w_1001/wp-content/uploads/2015/09/design-of-everyday-things.jpg',
+  'http://www.kurzweilai.net/images/The-Most-Human-Human-Paperback-Front-Cover.jpg',
+  'https://upload.wikimedia.org/wikipedia/en/8/8f/The_pragmatic_programmer.jpg'
+]
 function exerciseThree(books) {
   //Write your code in here
+  const content = document.getElementById('content')
+  const list = document.createElement('ul')
+  content.appendChild(list)
+  books.forEach(
+    (book, i) => {
+      const li = document.createElement('li')
+      const p = document.createElement('p')
+      const img = document.createElement('img')
+      li.appendChild(p)
+      li.appendChild(img)
+      list.appendChild(li)
+      p.innerText = `${book.title} - ${book.author}`
+      img.src = bookCovers[i]
+      img.width = 100
+      li.style.backgroundColor = book.alreadyRead ? 'green' : 'red'
+    }
+  )
 }
 
 //
