@@ -59,9 +59,77 @@ var movies = [
 ];
 
 // create showMovies function
+function showMovies() {
+  const allMovies = document.getElementById('all-movies')
+  movies.forEach(movie => {
+    const paragragh = document.createElement('p')
+    paragragh.innerText = `${movie.title} - ${movie.director}`
+    paragragh.classList = 'movie' // Agregamos la clase "movie" para poder borrarlo después
+    allMovies.appendChild(paragragh)
+  })
+  const moviesNumber= document.getElementById('movies-number')
+  moviesNumber.innerText = movies.length
+}
+setTimeout(showMovies, 1000) // Se ejecuta primero
 
+// How many movies can you see on your page?
 
-// create a new movie object for your favorite movie
-
+var myMovies = [
+  {
+    title: 'Matrix',
+    director: 'Wakowski Sisters',
+    type: 'Sci Fi',
+    haveWatched: true
+  },
+  {
+    title: 'Titanic',
+    director: 'James Cameron',
+    type: 'Drama',
+    haveWatched: false
+  },
+  {
+    title: 'Joker',
+    director: 'Todd Phillips',
+    type: 'Comedy',
+    haveWatched: true
+  }
+]
 
 // create addMovies function
+function addMovies(movie) {
+  document.querySelectorAll('p.movie').forEach(p => p.remove())
+  movies.push(movie)
+  setTimeout(showMovies, 1000) // se ejecuta tercero
+}
+
+// TASK 3
+setTimeout(() => addMovies(myMovies[0]), 2000) // se ejecuta segundo
+
+// TASK 4
+
+// Create a form anywhere on your page. The form should have
+// - a "save" button.
+// When the button is clicked
+// - The field values should be used to create a new movie object literal
+// - The new movie is then added to the list of movies and gets displayed on your page
+// TIP: Use the functions you created on tasks 1-3
+function createMovieObject(title, director, type, haveWatched) {
+  const movie = {
+    title: title,
+    director: director,
+    type: type,
+    haveWatched: haveWatched
+  }
+  return movie
+}
+
+document.getElementById('save').addEventListener('click', event => {
+  event.preventDefault()
+  const title = document.getElementById('input-title').value
+  const director = document.getElementById('input-director').value
+  const type = document.getElementById('input-type').value
+  const haveWatched = document.getElementById('input-watched').checked
+
+  const newMovie = createMovieObject(title, director, type, haveWatched)
+  addMovies(newMovie)
+})
