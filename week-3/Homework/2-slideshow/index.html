@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Slideshow</title>
-    <script src="slideshow.js"></script>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -13,5 +12,20 @@
   </head>
   <body>
     <!-- Write your HTML in here -->
+    <div>
+      <img id="slideshow" src="img/bob0.jpeg"/>
+      <p id="contador">0</p>
+    </div>
+    <div>
+      <button id="auto-back">auto back</button>
+      <button id="back">back</button>
+      <button id="stop">stop</button>
+      <button id="forward">forward</button>
+      <button id="auto-forward">auto forward</button>
+    </div>
+    <div>
+      <input id="timer" type="number" />
+    </div>
+    <script src="slideshow.js"></script>
   </body>
 </html>
